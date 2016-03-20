@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+body {
+  font-family: "Open Sans";
+	background-color: #78909c;
+	color: white;
+	margin: 0;
+	margin-top: 60px;
+	padding: 0;
+}
+
+h1 {
+	font-size: 48px;
+	text-align: center;
+}
+
+h3 {
+	font-size: 24px;
+	text-align: center;
+}
+
+#nav {
+	width: 100%;
+	position: absolute;
+	font-size: 12px;
+	top: 0px;
+	height: 40px;
+	border-bottom: 2px solid white;
+	background-color: rgba(255,255,255,0.2);
+}
+
+#nav ul {
+	list-style-type: none;
+}
+
+#nav ul li {
+	display: inline;
+	margin-right: 15px;
+}
+
+#nav ul li a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#talks-table {
+	width: 80%;
+	margin: 0 auto;
+	font-size: 120%;
+}
+#talks-table .desc {
+	word-break: break-all;
+}
+#talks-table .type {
+	font-style: italic;
+}
+#talks-table th {
+	width: 32%;
+}
+#talks-table thead th {
+	font-size: 20px;
+}
+#talks-table th td {
+	padding: 5px;
+}
+#talks-table button {
+	word-break: normal;
+}
+#talks-table tr:nth-child(2n+1) {
+	background-color: #6C828C;
+}
+#talks-table tr.hidden {
+	background-color: #070;
+	opacity: 0.6;
+}
+#talks-table tr:nth-child(2n+1).hidden {
+	background-color: #060;
+}
+.error {
+	background-color: #662222;
+	color: #ffffff;
+	padding: 5px;
+	margin: 5px;
+}
+.btn_unhide {
+	border: 0px;
+	color: #fff;
+	background-color: inherit;
+}
+.btn_hide {
+	border: 0px;
+	color: #fff;
+	background-color: inherit;
+}
