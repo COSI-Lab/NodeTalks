@@ -22,10 +22,25 @@ module.exports.createTalk = function(req, res) {
   });
 };
 
+module.exports.updateTalk = function(req, res) {
+  console.log("UPDURTINGS");
+  var sequelize = connectToServer();
+  var talksModel = sequelize.import(__dirname + "/talks-model.js");
+
+  return talksModel.sync().then(() => {
+    return talksModel.update(
+      { hidden: req.body.hiddenStatus },
+      { where: { id: req.body.talkId }}
+    );
+  }).then(() => {
+    loadTalks(talksModel, res);
+  });
+};
+
 // Send a SELECT query to the database and return the response as JSON
 function loadTalks(model, res) {
   return model.findAll({
-    attributes: ['id', 'name', 'type', 'desc']
+    attributes: ['id', 'name', 'type', 'desc', 'hidden']
   }).then(result => {
     return res.json(result);
   });

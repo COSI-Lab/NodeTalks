@@ -28,11 +28,20 @@ app.get('/', (req, res) => {
 	res.render('index');
 });
 
+app.get('/all', (req, res) => {
+	res.render('all');
+});
+
+
 // api to get talks from the db
 app.get('/api/talks', talksCtrl.getTalks);
 
 // api to push talks into the db
 app.post('/api/postTalk', talksCtrl.createTalk);
+
+// api to hide & unhide talks on the site
+app.post('/api/hideTalk', talksCtrl.updateTalk);
+app.post('/api/unhideTalk', talksCtrl.updateTalk);
 
 // start the server
 app.listen(3000, () => {

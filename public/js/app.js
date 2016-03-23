@@ -17,6 +17,28 @@ function postTalk($scope, $http) {
   });
 }
 
+function hideTalk($scope, $http) {
+  var data = {
+    talkId: $scope.id,
+    hiddenStatus: true
+  };
+
+  $http.post("/api/hideTalk", data).then(response => {
+    $scope.talks = response.data;
+  });
+}
+
+function unhideTalk($scope, $http) {
+  var data = {
+    talkId: $scope.id,
+    hiddenStatus: false
+  };
+
+  $http.post("/api/unhideTalk", data).then(response => {
+    $scope.talks = response.data;
+  });
+}
+
 // The main controller for the page
 app.controller('talksController', ($scope, $http) => {
   getTalks($scope, $http); // Always load in talks at startup
@@ -28,12 +50,14 @@ app.controller('talksController', ($scope, $http) => {
   };
 
   // Hide a certain talk
-  $scope.hide = () => {
-
+  $scope.hide = (id) => {
+    $scope.id = id;
+    hideTalk($scope, $http);
   };
 
   // unhide a certain talk
-  $scope.unhide = () => {
-
+  $scope.unhide = (id) => {
+    $scope.id = id;
+    unhideTalk($scope, $http);
   };
 });
