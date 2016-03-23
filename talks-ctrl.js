@@ -11,11 +11,11 @@ module.exports.createTalk = function(req, res) {
   var talksModel = sequelize.import(__dirname + "/talks-model.js");
 
   // write the new talk to the server
-  return talksModel.sync().then(function() {
+  return talksModel.sync().then(() => {
     // create an instance of the model and save to the db
     talksModel.create({name: req.body.name, type: req.body.type, desc: req.body.desc}, {
       fields: ['id', 'name', 'type', 'desc']
-    }).then(function(data) {
+    }).then(data => {
       // reload the talks
       loadTalks(talksModel, res);
     });
@@ -26,7 +26,7 @@ module.exports.createTalk = function(req, res) {
 function loadTalks(model, res) {
   return model.findAll({
     attributes: ['id', 'name', 'type', 'desc']
-  }).then(function(result) {
+  }).then(result => {
     return res.json(result);
   });
 }

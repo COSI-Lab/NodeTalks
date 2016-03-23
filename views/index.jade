@@ -24,12 +24,15 @@ html(ng-app='talksApp')
     h3 Next Meeting: Mar. 23
     
     table(ng-controller="talksController" id="talks-table")
-      tr(class="event" ng-repeat="talk in talks | orderBy: ['type', 'name']")
+      tr(class="event" ng-repeat="talk in talks | orderBy: ['type']")
         td.name {{ talk.name }}
         td.type {{ talk.type }}
         td.desc {{ talk.desc }}
+        td.hides
+          button(ng-click="hide()") X
+          button(ng-click="unhide()") &#x21B6;
       tr
-        th Name
+        th Talk Presenter
         th Type
         th Description
       tr
@@ -46,3 +49,4 @@ html(ng-app='talksApp')
           
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js")
     script(src='js/app.js')
+    p(style="text-align:center") V2.0 - Not powered by Fsuvius
