@@ -24,7 +24,7 @@ html(ng-app='talksApp')
     h3 Next Meeting: Mar. 23
     
     table(ng-controller="talksController" id="talks-table")
-      tr(class="event" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['type']")
+      tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['type']")
         td.name {{ talk.name }}
         td.type {{ talk.type }}
         td.desc {{ talk.desc }}
