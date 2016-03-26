@@ -13,7 +13,7 @@ html(ng-app='talksApp')
         li: a(href="http://print.cosi.clarkson.edu/") Print
         li: a(href="http://mirror.clarkson.edu/") Mirror
         li: a(href="http://fsuvius.cosi.clarkson.edu/") Fsuvius
-        li: a(href="http://talks.cosi.clarkson.edu/") Talks
+        li: a(href="http://talks.cslabs.clarkson.edu/") Talks
         li: a(href="http://cosi-lab.github.io/meeting-minutes/") Meeting Minutes
         li: a(href="http://cosi-lab.github.io/project-updates/") Project Updates
         li: a(href="http://moodle.cosi.clarkson.edu/") COSI Moodle
@@ -21,7 +21,7 @@ html(ng-app='talksApp')
     
     h1 Talks
     h3 Upcoming Events For The Clarkson Open Source Institute Meetings
-    h3 Next Meeting: Mar. 23
+    h3 Next Meeting: Mar. 30
     
     table(ng-controller="talksController" id="talks-table")
       tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | orderBy: ['type']")
@@ -47,6 +47,6 @@ html(ng-app='talksApp')
           th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description")
           th: button(ng-click="createTalk()") Create
           
-    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js")
+    script(src="js/angular.min.js")
     script(src='js/app.js')
     p(style="text-align:center") V2.0 - Not powered by Fsuvius

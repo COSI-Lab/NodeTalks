@@ -1,5 +1,5 @@
 var express = require('express'),
-  ipFilter = require('express-ip-filter'),
+  ipFilter = require('express-ipfilter'),
   bodyParser = require('body-parser'),
   talksCtrl = require('./talks-ctrl.js'),
   morgan = require('morgan');
@@ -17,14 +17,15 @@ app.use(bodyParser.json());
 
 app.use(morgan('tiny'));
 
-// Limits the page to be accesible on only a specific IP range as declared above
-app.use(ipFilter({
-  filter: ['*128.153.*'],
-  forbidden: 'This site is only available in the 128.153.0.0/24 subnet'
-}));
+var ips = [['128.153.0.0', '128.153.255.255']];
 
+// Limits the page to be accesible on only a specific IP range as declared above
+app.use(ipFilter(ips, {
+  mode: 'allow'
+}));
 // load the root page
 app.get('/', (req, res) => {
+	console.log(req.ip);
 	res.render('index');
 });
 
