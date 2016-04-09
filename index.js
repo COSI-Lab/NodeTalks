@@ -1,7 +1,8 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
   talksCtrl = require('./talks-ctrl.js'),
-  morgan = require('morgan');
+  morgan = require('morgan'),
+  requestIp = require('request-ip');
 
 var app = express();
 
@@ -10,6 +11,8 @@ app.set('view engine', 'jade');
 
 // push anything in the public/ directory to be public facing (angular code && styling)
 app.use(express.static('public'));
+
+app.use(requestIp.mw());
 
 // switch the accepted POST content format to JSON
 app.use(bodyParser.json());

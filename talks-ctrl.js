@@ -8,7 +8,8 @@ module.exports.getTalks = function(req, res) {
 };
 
 module.exports.createTalk = function(req, res) {
-  if(!inSubnet.IPv4(req.connection.remoteAddress, '128.153.0.0/16')) {
+  console.log(req.clientIp);
+  if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
     res.sendStatus(500);
     return;
   }
@@ -29,7 +30,7 @@ module.exports.createTalk = function(req, res) {
 };
 
 module.exports.updateTalk = function(req, res) {
-  if(!inSubnet.IPv4(req.connection.remoteAddress, '128.153.0.0/16')) {
+  if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
     res.sendStatus(500);
     return;
   }

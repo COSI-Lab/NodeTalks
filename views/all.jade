@@ -21,7 +21,7 @@ html(ng-app='talksApp')
     
     h1 Talks
     h3 Upcoming Events For The Clarkson Open Source Institute Meetings
-    h3 Next Meeting: Mar. 30
+    h3 Next Meeting: Apr. 6
     
     table(ng-controller="talksController" id="talks-table")
       tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | orderBy: ['type']")
@@ -39,7 +39,7 @@ html(ng-app='talksApp')
         form
           th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name")
           th: select(name="type" ng-model="newTalk.type")
-            option(value="form topic") Forum Topic
+            option(value="forum topic") Forum Topic
             option(value="lightning talk") Lightning Talk
             option(value="project  update") Project Update
             option(value="announcement") Announcement
