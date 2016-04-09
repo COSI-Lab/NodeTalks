@@ -1,5 +1,4 @@
 var express = require('express'),
-  ipFilter = require('express-ipfilter'),
   bodyParser = require('body-parser'),
   talksCtrl = require('./talks-ctrl.js'),
   morgan = require('morgan');
@@ -17,22 +16,16 @@ app.use(bodyParser.json());
 
 app.use(morgan('tiny'));
 
-var ips = [['128.153.0.0', '128.153.255.255']];
-
-// Limits the page to be accesible on only a specific IP range as declared above
-app.use(ipFilter(ips, {
-  mode: 'allow'
-}));
 // load the root page
 app.get('/', (req, res) => {
 	console.log(req.ip);
 	res.render('index');
 });
 
+// load the root page (including hidden talks)
 app.get('/all', (req, res) => {
 	res.render('all');
 });
-
 
 // api to get talks from the db
 app.get('/api/talks', talksCtrl.getTalks);

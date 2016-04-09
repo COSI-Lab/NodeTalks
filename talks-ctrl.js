@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var inSubnet = require('insubnet');
 
 module.exports.getTalks = function(req, res) {
   var sequelize = connectToServer();
@@ -7,6 +8,11 @@ module.exports.getTalks = function(req, res) {
 };
 
 module.exports.createTalk = function(req, res) {
+  if(!inSubnet.IPv4(req.connection.remoteAddress, '128.153.0.0/16')) {
+    res.sendStatus(500);
+    return;
+  }
+
   var sequelize = connectToServer();
   var talksModel = sequelize.import(__dirname + "/talks-model.js");
 
@@ -23,7 +29,11 @@ module.exports.createTalk = function(req, res) {
 };
 
 module.exports.updateTalk = function(req, res) {
-  console.log("UPDURTINGS");
+  if(!inSubnet.IPv4(req.connection.remoteAddress, '128.153.0.0/16')) {
+    res.sendStatus(500);
+    return;
+  }
+
   var sequelize = connectToServer();
   var talksModel = sequelize.import(__dirname + "/talks-model.js");
 

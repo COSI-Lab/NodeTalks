@@ -13,7 +13,9 @@ function postTalk($scope, $http) {
 
   // Send the POST request
   $http.post("/api/postTalk", data).then(response => {
-    $scope.talks = response.data; // Set the scope's talks to be the output of the api call
+      $scope.talks = response.data; // Set the scope's talks to be the output of the api call
+  }, error => {
+    alert("Talk submissions are only allowed in the 128.153.0.0/16 subnet");
   });
 }
 
@@ -25,6 +27,8 @@ function hideTalk($scope, $http) {
 
   $http.post("/api/hideTalk", data).then(response => {
     $scope.talks = response.data;
+  }, error => {
+    alert("Talk modifications are only allowed in the 128.153.0.0/16 subnet");
   });
 }
 
@@ -36,6 +40,8 @@ function unhideTalk($scope, $http) {
 
   $http.post("/api/unhideTalk", data).then(response => {
     $scope.talks = response.data;
+  }, error => {
+    alert("Talk modifications are only allowed in the 128.153.0.0/16 subnet");
   });
 }
 
