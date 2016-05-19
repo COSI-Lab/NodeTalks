@@ -7,6 +7,12 @@ module.exports.getTalks = function(req, res) {
   loadTalks(talksModel, res);
 };
 
+module.exports.getVisibleTalks = function(req, res) {
+  let sequelize = connectToServer();
+  let talksModel = sequelize.import(__dirname + "/talks-model.js");
+  loadVisibleTalks(talksModel, res);
+}
+
 module.exports.createTalk = function(req, res) {
   console.log(req.clientIp);
   if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
@@ -52,6 +58,15 @@ module.exports.updateTalk = function(req, res) {
 function loadTalks(model, res) {
   return model.findAll({
     attributes: ['id', 'name', 'type', 'desc', 'hidden']
+  }).then(result => {
+    return res.json(result);
+  });
+}
+
+function loadVisibleTalks(model, res) {
+  return model.findAll({
+    attributes: ['id', 'name', 'type', 'desc', 'hidden'],
+    where: {hidden: false}
   }).then(result => {
     return res.json(result);
   });

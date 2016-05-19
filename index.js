@@ -7,7 +7,7 @@ var express = require('express'),
 var app = express();
 
 // use jade as the template engine
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // push anything in the public/ directory to be public facing (angular code && styling)
 app.use(express.static('public'));
@@ -32,6 +32,9 @@ app.get('/all', (req, res) => {
 
 // api to get talks from the db
 app.get('/api/talks', talksCtrl.getTalks);
+
+// api to get all non-hidden talks from the db
+app.get('/api/talks/visible', talksCtrl.getVisibleTalks)
 
 // api to push talks into the db
 app.post('/api/postTalk', talksCtrl.createTalk);
