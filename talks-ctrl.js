@@ -1,27 +1,26 @@
 var Sequelize = require('sequelize');
 var inSubnet = require('insubnet');
 
-module.exports.getTalks = function(req, res) {
-  var sequelize = connectToServer();
-  var talksModel = sequelize.import(__dirname + "/talks-model.js");
+module.exports.getTalks = (req, res) => {
+  let sequelize = connectToServer();
+  let talksModel = sequelize.import(__dirname + "/talks-model.js");
   loadTalks(talksModel, res);
 };
 
-module.exports.getVisibleTalks = function(req, res) {
+module.exports.getVisibleTalks = (req, res) => {
   let sequelize = connectToServer();
   let talksModel = sequelize.import(__dirname + "/talks-model.js");
   loadVisibleTalks(talksModel, res);
 }
 
-module.exports.createTalk = function(req, res) {
-  console.log(req.clientIp);
+module.exports.createTalk = (req, res) => {
   if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
     res.sendStatus(500);
     return;
   }
 
-  var sequelize = connectToServer();
-  var talksModel = sequelize.import(__dirname + "/talks-model.js");
+  let sequelize = connectToServer();
+  let talksModel = sequelize.import(__dirname + "/talks-model.js");
 
   // write the new talk to the server
   return talksModel.sync().then(() => {
@@ -35,14 +34,14 @@ module.exports.createTalk = function(req, res) {
   });
 };
 
-module.exports.updateTalk = function(req, res) {
+module.exports.updateTalk = (req, res) => {
   if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
     res.sendStatus(500);
     return;
   }
 
-  var sequelize = connectToServer();
-  var talksModel = sequelize.import(__dirname + "/talks-model.js");
+  let sequelize = connectToServer();
+  let talksModel = sequelize.import(__dirname + "/talks-model.js");
 
   return talksModel.sync().then(() => {
     return talksModel.update(
