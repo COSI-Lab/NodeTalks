@@ -1,52 +1,52 @@
 html(ng-app='talksApp')
-  head
-    title Talks
-    meta(charset='utf-8')
-    
-    link(rel='stylesheet' href='css/app.css')
-  body
-    #nav
-      ul
-        li: a(href="http://cosi.clarkson.edu/") CSLabs Homepage
-        li: a(href="http://dubsdot.cosi.clarkson.edu/") Dubsdot
-        li: a(href="http://docs.cosi.clarkson.edu/") Docs
-        li: a(href="http://print.cosi.clarkson.edu/") Print
-        li: a(href="http://mirror.clarkson.edu/") Mirror
-        li: a(href="http://fsuvius.cosi.clarkson.edu/") Fsuvius
-        li: a(href="http://talks.cslabs.clarkson.edu/") Talks
-        li: a(href="http://cosi-lab.github.io/meeting-minutes/") Meeting Minutes
-        li: a(href="http://cosi-lab.github.io/project-updates/") Project Updates
-        li: a(href="http://moodle.cosi.clarkson.edu/") COSI Moodle
-        li: a(href="http://management.cosi.clarkson.edu/") Management
-    
-    h1 Talks
-    h3 Upcoming Events For The Clarkson Open Source Institute Meetings
-    h3 Next Meeting: Mar. 30
-    
-    table(ng-controller="talksController" id="talks-table")
-      tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['type']")
-        td.name {{ talk.name }}
-        td.type {{ talk.type }}
-        td.desc {{ talk.desc }}
-        td.hides
-          button(ng-click="hide(this.talk.id)") X
-          button(ng-click="unhide(this.talk.id)") &#x21B6;
-      tr
-        th Talk Presenter
-        th Type
-        th Description
-      tr
-        form
-          th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name")
-          th: select(name="type" ng-model="newTalk.type")
-            option(value="forum topic") Forum Topic
-            option(value="lightning talk") Lightning Talk
-            option(value="project  update") Project Update
-            option(value="announcement") Announcement
-            option(value="after meeting slot") After-Meeting Slot
-          th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description")
-          th: button(ng-click="createTalk()") Create
-          
-    script(src="js/angular.min.js")
-    script(src='js/app.js')
-    p(style="text-align:center") V2.0 - Not powered by Fsuvius
+	head
+		title Talks
+		meta(charset='utf-8')
+		link(rel='stylesheet' href='css/app.css')
+	body
+		#nav
+			ul
+				li: a(href="http://cosi.clarkson.edu/") CSLabs Homepage
+				li: a(href="http://dubsdot.cosi.clarkson.edu/") Dubsdot
+				li: a(href="http://docs.cosi.clarkson.edu/") Docs
+				li: a(href="http://print.cosi.clarkson.edu/") Print
+				li: a(href="http://mirror.clarkson.edu/") Mirror
+				li: a(href="http://fsuvius.cosi.clarkson.edu/") Fsuvius
+				li: a(href="http://talks.cslabs.clarkson.edu/") Talks
+				li: a(href="http://cosi-lab.github.io/meeting-minutes/") Meeting Minutes
+				li: a(href="http://cosi-lab.github.io/project-updates/") Project Updates
+				li: a(href="http://moodle.cosi.clarkson.edu/") COSI Moodle
+				li: a(href="http://management.cosi.clarkson.edu/") Management
+
+		h1 Talks
+		h3 Upcoming Events For The Clarkson Open Source Institute Meetings
+		h3 Next Meeting: Mar. 30
+
+		table(ng-controller="talksController" id="talks-table")
+			tr
+				th.mdl-data-table__cell--non-numeric Talk Presenter
+				th Type
+				th Description
+
+			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['type']")
+				td.name {{ talk.name }}
+				td.type {{ talk.type }}
+				td.desc {{ talk.desc }}
+				td.hides
+					button(ng-click="hide(this.talk.id)") X
+					button(ng-click="unhide(this.talk.id)") &#x21B6;
+			tr
+				form
+					th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name")
+					th: select(name="type" ng-model="newTalk.type")
+						option(value="forum topic") Forum Topic
+						option(value="lightning talk") Lightning Talk
+						option(value="project	update") Project Update
+						option(value="announcement") Announcement
+						option(value="after meeting slot") After-Meeting Slot
+					th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description")
+					th: button(ng-click="createTalk()") Create
+
+		script(src="js/angular.min.js")
+		script(src='js/app.js')
+		p(style="text-align:center") V2.0 - Not powered by Fsuvius

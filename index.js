@@ -1,8 +1,8 @@
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  talksCtrl = require('./talks-ctrl.js'),
-  morgan = require('morgan'),
-  requestIp = require('request-ip');
+	bodyParser = require('body-parser'),
+	talksCtrl = require('./talks-ctrl.js'),
+	morgan = require('morgan'),
+	requestIp = require('request-ip');
 
 var app = express();
 
@@ -45,5 +45,5 @@ app.post('/api/unhideTalk', talksCtrl.updateTalk);
 
 // start the server
 app.listen(3000, () => {
-  console.log('Server listening on port 3000, press ctrl-C to quit...');
+	console.log('Server listening on port 3000, press ctrl-C to quit...');
 });
