@@ -3,7 +3,7 @@
 body {
 	font-family: "Open Sans";
 	background-color: #78909c;
-	color: white;
+	color: #e4e4e4;
 	margin: 0;
 	margin-top: 60px;
 	padding: 0;
@@ -13,6 +13,10 @@ h1 {
 	font-size: 48px;
 	text-align: center;
 	margin-bottom: 0px;
+}
+
+table {
+	border-collapse: collapse;
 }
 
 td.hides {
@@ -25,13 +29,23 @@ td.hides button {
 	background: 0;
 	/*border: 0;
 	outline: 0;*/
-	color: white;
+	color: #eee;
+	background-color: #78909c;
+	margin: 0 2px;
 
 	&:hover {
 		background: white;
 		color: #78909c;
 	}
 }
+
+table tbody tr:last-child {
+	background-color: #6C828C;
+}
+table tbody tr:last-child button {
+	margin-right: 5px;
+}
+
 
 h3 {
 	font-size: 24px;
@@ -70,10 +84,12 @@ h5 {
 }
 
 #talks-table {
-	color: white;
+	color: #444;
+	background-color: #fff;
 	width: 80%;
 	margin: 0 auto;
 	font-size: 120%;
+	box-shadow: 0px 0px 2px black;
 }
 #talks-table .desc {
 	word-break: break-word;
@@ -81,11 +97,23 @@ h5 {
 #talks-table .type {
 	font-style: italic;
 }
-#talks-table th {
+#talks-table tbody th {
 	width: 32%;
 }
 #talks-table thead th {
 	font-size: 20px;
+	color: white;
+	background-color: #6C828C;
+	padding-bottom: 5px;
+}
+.event, .name, .type, .desc {
+	padding: 5px 0;
+}
+.name {
+	padding-left: 10px;
+}
+tbody tr:last-child th {
+	padding: 10px 0;
 }
 #talks-table th td {
 	padding: 5px;
@@ -93,15 +121,10 @@ h5 {
 #talks-table button {
 	word-break: normal;
 }
-#talks-table tr:nth-child(2n+1) {
-	background-color: #6C828C;
-}
 #talks-table tr.hidden {
-	background-color: #070;
-	opacity: 0.6;
-}
-#talks-table tr:nth-child(2n+1).hidden {
-	background-color: #060;
+	background-color: #888;
+	/*opacity: 0.6;*/
+	color: white;
 }
 .error {
 	background-color: #662222;
@@ -111,11 +134,11 @@ h5 {
 }
 .btn_unhide {
 	border: 0px;
-	color: #fff;
+	color: #444;
 	background-color: inherit;
 }
 .btn_hide {
 	border: 0px;
-	color: #fff;
+	color: #444;
 	background-color: inherit;
 }

@@ -21,13 +21,14 @@ html(ng-app='talksApp')
 
 		h1 Talks
 		h3 Upcoming Events For The Clarkson Open Source Institute Meetings
-		h3 Next Meeting: Apr. 6
+		h3 Next Meeting: Aug. 31
 
 		table(ng-controller="talksController" id="talks-table")
-			tr
+			thead: tr
 				th Talk Presenter
 				th Type
 				th Description
+				th
 			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | orderBy: ['type']")
 				td.name {{ talk.name }}
 				td.type {{ talk.type }}

@@ -20,33 +20,35 @@ html(ng-app='talksApp')
 
 		h1 Talks
 		h3 Upcoming Events For The Clarkson Open Source Institute Meetings
-		h3 Next Meeting: Mar. 30
+		h3 Next Meeting: Aug. 31
 
 		table(ng-controller="talksController" id="talks-table")
-			tr
-				th.mdl-data-table__cell--non-numeric Talk Presenter
+			thead: tr
+				th Talk Presenter
 				th Type
 				th Description
+				th
 
-			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['type']")
-				td.name {{ talk.name }}
-				td.type {{ talk.type }}
-				td.desc {{ talk.desc }}
-				td.hides
-					button(ng-click="hide(this.talk.id)") X
-					button(ng-click="unhide(this.talk.id)") &#x21B6;
-			tr
-				form
-					th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name")
-					th: select(name="type" ng-model="newTalk.type")
-						option(value="forum topic") Forum Topic
-						option(value="lightning talk") Lightning Talk
-						option(value="project	update") Project Update
-						option(value="announcement") Announcement
-						option(value="after meeting slot") After-Meeting Slot
-					th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description")
-					th: button(ng-click="createTalk()") Create
+			tbody
+				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['type']")
+					td.name {{ talk.name }}
+					td.type {{ talk.type }}
+					td.desc {{ talk.desc }}
+					td.hides
+						button(ng-click="hide(this.talk.id)") X
+						button(ng-click="unhide(this.talk.id)") &#x21B6;
+				tr
+					form
+						th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name")
+						th: select(name="type" ng-model="newTalk.type")
+							option(value="forum topic") Forum Topic
+							option(value="lightning talk") Lightning Talk
+							option(value="project	update") Project Update
+							option(value="announcement") Announcement
+							option(value="after meeting slot") After-Meeting Slot
+						th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description")
+						th: button(ng-click="createTalk()") Create
 
 		script(src="js/angular.min.js")
 		script(src='js/app.js')
-		p(style="text-align:center") V2.0 - Not powered by Fsuvius
+		p(style="text-align:center") V2.1.1
