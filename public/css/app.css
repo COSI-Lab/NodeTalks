@@ -1,144 +1,113 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-
-body {
-	font-family: "Open Sans";
-	background-color: #78909c;
-	color: #e4e4e4;
-	margin: 0;
-	margin-top: 60px;
-	padding: 0;
+.nav {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid #fff;
+  font-size: 12px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
-h1 {
-	font-size: 48px;
-	text-align: center;
-	margin-bottom: 0px;
+.nav ul {
+  list-style-type: none;
+}
+
+.nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+.nav ul li a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 table {
-	border-collapse: collapse;
+  background-color: white;
+  border-collapse: collapse;
+  box-shadow: 0 0 2px black;
+  color: #444;
+  font-size: 1.2em;
+  margin: 0 auto;
+  width: 80%;
 }
 
-td.hides {
-	clear: both;
-}
-
-td.hides button {
-	display: inline;
-	float: left;
-	background: 0;
-	/*border: 0;
-	outline: 0;*/
-	color: #eee;
-	background-color: #78909c;
-	margin: 0 2px;
-
-	&:hover {
-		background: white;
-		color: #78909c;
-	}
+table thead th {
+  background-color: #6c828c;
+  color: white;
+  font-size: 20px;
+  padding-bottom: 5px;
 }
 
 table tbody tr:last-child {
-	background-color: #6C828C;
-}
-table tbody tr:last-child button {
-	margin-right: 5px;
+  background-color: #6c828c;
 }
 
+table tbody tr:last-child th {
+  padding: 10px 0;
+}
+
+table tbody .event {
+  text-align: center;
+}
+
+table tbody .event td {
+  padding: 5px 0;
+}
+
+table tbody .event .name {
+  padding-left: 10px;
+}
+
+table tbody .event .type {
+  font-style: italic;
+}
+
+table tbody .event .desc {
+  word-break: break-word;
+}
+
+table .hides {
+  clear: both;
+}
+
+table .hides button {
+  background-color: #78909c;
+  color: white;
+  display: inline;
+  float: right;
+  margin: 0 2px;
+}
+
+table .hidden {
+  background-color: #888;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #78909c;
+  color: #e4e4e4;
+  font-family: 'Open Sans';
+  margin-top: 60px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 0;
+}
 
 h3 {
-	font-size: 24px;
-	text-align: center;
+  text-align: center;
+  font-size: 24px;
 }
 
 h5 {
-	font-size: 16px;
-	font-weight: bolder;
-	text-align: center;
-}
-
-#nav {
-	width: 100%;
-	position: absolute;
-	font-size: 12px;
-	top: 0px;
-	height: 40px;
-	border-bottom: 2px solid white;
-	background-color: rgba(255,255,255,0.2);
-}
-
-#nav ul {
-	list-style-type: none;
-}
-
-#nav ul li {
-	display: inline;
-	margin-right: 15px;
-}
-
-#nav ul li a {
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-#talks-table {
-	color: #444;
-	background-color: #fff;
-	width: 80%;
-	margin: 0 auto;
-	font-size: 120%;
-	box-shadow: 0px 0px 2px black;
-}
-#talks-table .desc {
-	word-break: break-word;
-}
-#talks-table .type {
-	font-style: italic;
-}
-#talks-table tbody th {
-	width: 32%;
-}
-#talks-table thead th {
-	font-size: 20px;
-	color: white;
-	background-color: #6C828C;
-	padding-bottom: 5px;
-}
-.event, .name, .type, .desc {
-	padding: 5px 0;
-}
-.name {
-	padding-left: 10px;
-}
-tbody tr:last-child th {
-	padding: 10px 0;
-}
-#talks-table th td {
-	padding: 5px;
-}
-#talks-table button {
-	word-break: normal;
-}
-#talks-table tr.hidden {
-	background-color: #888;
-	/*opacity: 0.6;*/
-	color: white;
-}
-.error {
-	background-color: #662222;
-	color: #ffffff;
-	padding: 5px;
-	margin: 5px;
-}
-.btn_unhide {
-	border: 0px;
-	color: #444;
-	background-color: inherit;
-}
-.btn_hide {
-	border: 0px;
-	color: #444;
-	background-color: inherit;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
 }

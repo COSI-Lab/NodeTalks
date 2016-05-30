@@ -1,0 +1,40 @@
+@import 'fonts';
+@import 'colors';
+@import 'nav';
+@import 'table';
+
+@mixin center { text-align: center; }
+
+@mixin clear-mar-pad {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	@include clear-mar-pad;
+
+	background-color: $blue;
+	color: $text-white;
+	font-family: 'Open Sans';
+	margin-top: 60px;
+}
+
+h1 {
+	@include center;
+
+	font-size: 48px;
+	margin-bottom: 0;
+}
+
+h3 {
+	@include center;
+
+	font-size: 24px;
+}
+
+h5 {
+	@include center;
+
+	font-size: 16px;
+	font-weight: bolder;
+}

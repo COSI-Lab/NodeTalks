@@ -1,0 +1,55 @@
+table {
+	background-color: white;
+	border-collapse: collapse;
+	box-shadow: 0 0 2px black;
+	color: #444;
+	font-size: 1.2em;
+	margin: 0 auto;
+	width: 80%;
+
+	thead {
+		th {
+			background-color: $dark-blue;
+			color: white;
+			font-size: 20px;
+			padding-bottom: 5px;
+		}
+	}
+
+	tbody {
+		tr:last-child {
+			background-color: $dark-blue;
+
+			th { padding: 10px 0; }
+		}
+
+		.event {
+			text-align: center;
+
+			td { padding: 5px 0; }
+
+			.name { padding-left: 10px; }
+
+			.type { font-style: italic; }
+
+			.desc { word-break: break-word; }
+		}
+	}
+
+	.hides {
+		clear: both;
+
+		button {
+			background-color: $blue;
+			color: white;
+			display: inline;
+			float: right;
+			margin: 0 2px;
+		}
+	}
+
+	.hidden {
+		background-color: $hidden-bg;
+		color: white;
+	}
+}
