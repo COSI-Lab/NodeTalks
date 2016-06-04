@@ -31,7 +31,7 @@ table {
   color: #444;
   font-size: 1.2em;
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 
 table thead th {
@@ -82,7 +82,7 @@ table .hides button {
 }
 
 table .hidden {
-  background-color: #888;
+  background-color: #ccc;
   color: white;
 }
 
