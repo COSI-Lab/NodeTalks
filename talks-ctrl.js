@@ -14,7 +14,7 @@ module.exports.getVisibleTalks = (req, res) => {
 }
 
 module.exports.createTalk = (req, res) => {
-	if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
+	if(!allowedIP(req.clientIp)) {
 		res.sendStatus(500);
 		return;
 	}
@@ -35,7 +35,7 @@ module.exports.createTalk = (req, res) => {
 };
 
 module.exports.updateTalk = (req, res) => {
-	if(!inSubnet.IPv4(req.clientIp, '128.153.0.0/16')) {
+	if(!allowedIP(req.clientIp)) {
 		res.sendStatus(500);
 		return;
 	}
@@ -76,4 +76,8 @@ function connectToServer() {
 		dialect: 'sqlite',
 		storage: './talks.db'
 	});
+}
+
+function allowedIP(ip) {
+	return inSubnet.IPv4(ip, '128.153.0.0/16');
 }
