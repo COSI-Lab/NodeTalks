@@ -6,6 +6,12 @@ var express = require('express'),
 
 var app = express();
 
+// create a node httpserver using the express app as a backend
+var httpserver = require('http').Server(app);
+
+// initalize socket.io object
+var io = require('socket.io')(httpserver);
+
 // use jade as the template engine
 app.set('view engine', 'pug');
 
@@ -43,7 +49,16 @@ app.post('/api/postTalk', talksCtrl.createTalk);
 app.post('/api/hideTalk', talksCtrl.updateTalk);
 app.post('/api/unhideTalk', talksCtrl.updateTalk);
 
+// Socket.io code
+io.on('connection', socket => {
+	
+	// When a client sends a update, broadcast it to all other clients
+	socket.on('update', data => {
+		socket.broadcast.emit('change', data);
+	})
+});
+
 // start the server
-app.listen(3000, () => {
+httpserver.listen(3000, () => {
 	console.log('Server listening on port 3000, press ctrl-C to quit...');
 });
