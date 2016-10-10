@@ -89,7 +89,7 @@ function parseToMM() {
 }
 
 function fetchTalks() {
-    return fetch('http://localhost:3000/api/talks/visible')
+    return fetch('http://talks.cosi.clarkson.edu:3000/api/talks/visible')
         .then(res => {
             return res.json();
         });
