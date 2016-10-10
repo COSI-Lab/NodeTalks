@@ -38,7 +38,7 @@ html(ng-app='talksApp')
 					td.desc {{ talk.desc }}
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
-						button(ng-click="unhide(this.talk.id)") &#x21B6;
+						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
 				tr
 					form
 						th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name")
@@ -52,7 +52,7 @@ html(ng-app='talksApp')
 						th: button(ng-click="createTalk()") Create
 
 		p(style="text-align: center;"): button(onclick="parseToMM()") Parse to Meeting Minutes
-		
+			
 		script(src="js/angular.min.js")
 		script(src="js/moment.min.js")
 		script(src="js/dialog-polyfill.js")

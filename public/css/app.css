@@ -81,6 +81,10 @@ table .hides button {
   margin: 0 2px;
 }
 
+table .hides button.hidden-button {
+  display: none;
+}
+
 table .hidden {
   background-color: #ccc;
   color: black;

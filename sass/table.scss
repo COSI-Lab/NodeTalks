@@ -45,6 +45,10 @@ table {
 			display: inline;
 			float: right;
 			margin: 0 2px;
+
+			&.hidden-button {
+				display: none;
+			}
 		}
 	}
 
@@ -53,3 +57,5 @@ table {
 		color: black;
 	}
 }
+
+
