@@ -27,8 +27,7 @@ function hideTalk($scope, $http, socket) {
         hiddenStatus: true
     };
 
-    $http.post("/api/hideTalk", data).then(response => {
-        $scope.talks = response.data;
+    $http.post("/api/hideTalk", data).then(response => { $scope.talks = response.data;
         socket.emit("update", response.data);
     }, error => {
         alert("Talk modifications are only allowed in the 128.153.0.0/16 subnet");
