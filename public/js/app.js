@@ -61,8 +61,10 @@ app.controller('talksController', ($scope, $http) => {
 
     // Send a http POST request to create a new talk
     $scope.createTalk = () => {
-        postTalk($scope, $http, socket);
-        $scope.newTalk = {}; // Clear out the input boxes
+        if($scope.newTalk !== undefined) {
+            postTalk($scope, $http, socket);
+            $scope.newTalk = {}; // Clear out the input boxes
+        }
     };
 
     // Hide a certain talk
