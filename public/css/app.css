@@ -1,29 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-.nav {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-bottom: 2px solid #fff;
-  font-size: 12px;
-  height: 40px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.nav ul {
-  list-style-type: none;
-}
-
-.nav ul li {
-  display: inline;
-  margin-right: 15px;
-}
-
-.nav ul li a {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 table {
   background-color: white;
   border-collapse: collapse;
