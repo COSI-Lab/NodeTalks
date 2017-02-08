@@ -4,22 +4,22 @@ html(ng-app='talksApp')
 		meta(charset='utf-8')
 		link(rel='stylesheet' href='css/app.css')
 		link(rel='stylesheet' href='css/dialog-polyfill.css')
+		link(rel='stylesheet' href='https://dubsdot.cosi.clarkson.edu/cosi-nav.css')
+
 		script(src='js/socket.io.js')
 		script(src='js/fetch.js')
+		style.
+			:root {
+				--background-color: rgba(255,255,255,0.2);
+				--text-color: white;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
 	body
-		.nav
-			ul
-				li: a(href="http://cosi.clarkson.edu/") CSLabs Homepage
-				li: a(href="http://dubsdot.cosi.clarkson.edu/") Dubsdot
-				li: a(href="http://docs.cosi.clarkson.edu/") Docs
-				li: a(href="http://print.cosi.clarkson.edu/") Print
-				li: a(href="http://mirror.clarkson.edu/") Mirror
-				li: a(href="http://fsuvius.cosi.clarkson.edu/") Fsuvius
-				li: a(href="http://talks.cslabs.clarkson.edu/") Talks
-				li: a(href="http://cosi-lab.github.io/meeting-minutes/") Meeting Minutes
-				li: a(href="http://cosi-lab.github.io/project-updates/") Project Updates
-				li: a(href="http://moodle.cosi.clarkson.edu/") COSI Moodle
-				li: a(href="http://management.cosi.clarkson.edu/") Management
+		cosi-nav
 
 		h1 Talks
 		h3 Upcoming Events For The Clarkson Open Source Institute Meetings
@@ -58,4 +58,5 @@ html(ng-app='talksApp')
 		script(src="js/moment.min.js")
 		script(src="js/dialog-polyfill.js")
 		script(src='js/app.js')
-		p(style="text-align:center") V2.2.0
+		script(src='js/cosi-nav.js' defer)
+		p(style="text-align:center") V2.2.1
