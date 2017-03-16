@@ -51,6 +51,7 @@ function unhideTalk($scope, $http, socket) {
 // The main controller for the page
 app.controller('talksController', ($scope, $http) => {
     getTalks($scope, $http); // Always load in talks at startup
+    nextWednesday();
 
     let socket = io.connect();
 
@@ -94,6 +95,38 @@ function fetchTalks() {
         .then(res => {
             return res.json();
         });
+}
+
+function nextWednesday() {
+    // Meeting dates for the rest of the week. Update this array once a semester
+    // to get the valid list of meeting dates
+    var Dates2017 = [
+        "March 29th",
+        "April 5th",
+        "April 12th",
+        "April 19th",
+        "April 26th"
+    ];
+
+    let i = 0;
+    let nextMeeting = "";
+
+    while(true) {
+        let day = moment().day(3 + (i*7)).format("MMMM Do");
+        if(Dates2017.includes(day)) {
+            nextMeeting = day;
+            break;
+        }
+
+        // Never more than 15 meetings, so exit out when the time comes.
+        if(i > 15) {
+            nextMeeting = "TBD";
+            break;
+        }
+        i++;
+    }
+
+    document.getElementById("meetingDate").innerText = nextMeeting;
 }
 
 function generateMeetingMinutes(talks) {

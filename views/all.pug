@@ -21,7 +21,8 @@ html(ng-app='talksApp')
 
 		h1 Talks
 		h3 Upcoming Events For The Clarkson Open Source Institute Meetings
-		h3 Next Meeting: Aug. 31
+		h3 Next Meeting:
+			span(style="margin-left: 5px;")#meetingDate
 
 		table(ng-controller="talksController" id="talks-table")
 			thead: tr
@@ -51,5 +52,6 @@ html(ng-app='talksApp')
 		script(src="js/angular.min.js")
 		script(src='js/app.js')
 		script(src='js/fetch.js')
+		script(src='js/moment.min.js')
 		script(src='js/cosi-nav.js' defer)
 		p(style="text-align:center") V2.2.1
