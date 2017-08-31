@@ -12,6 +12,8 @@ function postTalk($scope, $http, socket) {
     // Set the data to be sent through the request to be the newTalk object
     var data = $scope.newTalk;
 
+    console.log(data);
+
     // Send the POST request
     $http.post("/api/postTalk", data).then(response => {
         $scope.talks = response.data; // Set the scope's talks to be the output of the api call
@@ -63,6 +65,14 @@ app.controller('talksController', ($scope, $http) => {
     // Send a http POST request to create a new talk
     $scope.createTalk = () => {
         if($scope.newTalk !== undefined) {
+            let {name, type, desc} = $scope.newTalk;
+            
+            if(name.trim() == '' || type.trim() == '' || desc.trim() == '') {
+                alert('Empty fields. please try again');
+                $scope.newTalk = {};
+                return;
+            }
+
             postTalk($scope, $http, socket);
             $scope.newTalk = {}; // Clear out the input boxes
         }
