@@ -5,4 +5,4 @@ NodeTalks is a node webapp that manages talks at [COSI](http://cosi.clarkson.edu
 ## Tools Used
 * Express
 * SQLite3 & Sequelize
-* Angular 1.0 (Will be updated to 2.0 fairly soon)
+* Angular 1.x
