@@ -30,7 +30,7 @@ html(ng-app='talksApp')
 				th Type
 				th Description
 				th
-			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | orderBy: ['id']")
+			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['id']")
 				td.name {{ talk.name }}
 				td.type {{ talk.type }}
 				td.desc {{ talk.desc }}
