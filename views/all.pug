@@ -4,7 +4,7 @@ html(ng-app='talksApp')
 		meta(charset='utf-8')
 		link(rel='stylesheet' href='css/app.css')
 		link(rel='stylesheet' href='https://dubsdot.cosi.clarkson.edu/cosi-nav.css')
-		script(src='js/socket.io.js')
+		script(src='js/vendors/socket.io.js')
 		style.
 			:root {
 				--background-color: rgba(255,255,255,0.2);
@@ -77,12 +77,12 @@ html(ng-app='talksApp')
 					th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description" required)
 					th: button(ng-click="createTalk()") Create
 
-		script(src="js/angular.min.js")
-		script(src="js/feather.min.js")
-		script(src="js/webanimations-polyfill.min.js")
+		script(src="js/vendors/angular.min.js")
+		script(src="js/vendors/feather.min.js")
+		script(src="js/vendors/webanimations-polyfill.min.js")
+		script(src='js/vendors/fetch.js')
+		script(src='js/vendors/moment.min.js')
 		script(src="js/components/snackbar.js")
-		script(src='js/app.js')
-		script(src='js/fetch.js')
-		script(src='js/moment.min.js')
 		script(src='js/components/cosi-nav.js' defer)
+		script(src='js/app.js')
 		p(style="text-align:center") V2.2.2
