@@ -18,8 +18,9 @@ function postTalk($scope, $http, socket) {
     $http.post("/api/postTalk", data).then(response => {
         $scope.talks = response.data; // Set the scope's talks to be the output of the api call
         socket.emit("update", response.data); // Send it to the websocket to broadcast the change to everyone else
+        new Snackbar('success', 'check-circle', "Success: Your talk has been submitted");
     }, error => {
-        alert("Talk submissions are only allowed in the 128.153.0.0/16 subnet");
+        new Snackbar('error', 'alert-circle', "Error: Talk submissions are only allowed in the 128.153.0.0/16 subnet");
     });
 }
 
@@ -31,8 +32,9 @@ function hideTalk($scope, $http, socket) {
 
     $http.post("/api/hideTalk", data).then(response => { $scope.talks = response.data;
         socket.emit("update", response.data);
+        new Snackbar('success', 'check-circle', "Success: Talk hidden");
     }, error => {
-        alert("Talk modifications are only allowed in the 128.153.0.0/16 subnet");
+        new Snackbar('error', 'alert-circle', "Error: Talk modifications are only allowed in the 128.153.0.0/16 subnet");
     });
 }
 
@@ -45,8 +47,9 @@ function unhideTalk($scope, $http, socket) {
     $http.post("/api/unhideTalk", data).then(response => {
         $scope.talks = response.data;
         socket.emit("update", response.data);
+        new Snackbar('success', 'check-circle', "Success: Talk unhidden");
     }, error => {
-        alert("Talk modifications are only allowed in the 128.153.0.0/16 subnet");
+        new Snackbar('error', 'alert-circle', "Error: Talk modifications are only allowed in the 128.153.0.0/16 subnet");
     });
 }
 
@@ -111,11 +114,10 @@ function nextWednesday() {
     // Meeting dates for the rest of the week. Update this array once a semester
     // to get the valid list of meeting dates
     var Dates2017 = [
-        "March 29th",
-        "April 5th",
-        "April 12th",
-        "April 19th",
-        "April 26th"
+        'September 6th',
+        'September 13th',
+        'September 20th',
+        'September 27th'
     ];
 
     let i = 0;
