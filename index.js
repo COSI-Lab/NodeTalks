@@ -36,6 +36,10 @@ app.get('/all', (req, res) => {
 	res.render('all');
 });
 
+app.get('/chrono', (req, res) => {
+	res.render('chrono');
+})
+
 // api to get talks from the db
 app.get('/api/talks', talksCtrl.getTalks);
 

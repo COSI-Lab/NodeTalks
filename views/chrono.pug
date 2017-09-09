@@ -1,0 +1,60 @@
+html(ng-app='talksApp')
+	head
+		title Talks
+		meta(charset='utf-8')
+		link(rel='stylesheet' href='css/app.css')
+		link(rel='stylesheet' href='https://dubsdot.cosi.clarkson.edu/cosi-nav.css')
+		script(src='js/vendors/socket.io.js')
+		style.
+			:root {
+				--background-color: rgba(255,255,255,0.2);
+				--text-color: white;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
+		
+	body
+		cosi-nav
+
+		h1 Talks
+		h3 Upcoming Events For The Clarkson Open Source Institute Meetings
+		h3 Next Meeting:
+			span(style="margin-left: 5px;")#meetingDate
+
+		table(ng-controller="talksController" id="talks-table")
+			thead: tr
+				th Talk Presenter
+				th Type
+				th Description
+				th
+			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | orderBy: ['id']")
+				td.name {{ talk.name }}
+				td.type {{ talk.type }}
+				td.desc {{ talk.desc }}
+				td.hides
+					button(ng-click="hide(this.talk.id)") X
+					button(ng-click="unhide(this.talk.id)") &#x21B6;
+			tr
+				form
+					th: input(id="in_name" size=30 name="name" ng-model="newTalk.name" type="text" placeholder="Name" required)
+					th: select(name="type" ng-model="newTalk.type" required)
+						option(value="forum topic") Forum Topic
+						option(value="lightning talk") Lightning Talk
+						option(value="project	update") Project Update
+						option(value="announcement") Announcement
+						option(value="after meeting slot") After-Meeting Slot
+					th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description" required)
+					th: button(ng-click="createTalk()") Create
+
+		script(src="js/vendors/angular.min.js")
+		script(src="js/vendors/feather.min.js")
+		script(src="js/vendors/webanimations-polyfill.min.js")
+		script(src='js/vendors/fetch.js')
+		script(src='js/vendors/moment.min.js')
+		script(src="js/components/snackbar.js")
+		script(src='js/components/cosi-nav.js' defer)
+		script(src='js/app.js')
+		p(style="text-align:center") V2.2.2
