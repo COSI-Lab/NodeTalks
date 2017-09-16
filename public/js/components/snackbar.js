@@ -25,6 +25,8 @@ class Snackbar {
         );
 
         this.snackbar.querySelector('.feather-x').addEventListener('click', e => this.close());
+
+        setTimeout(() => this.close(), 10000);
     }
 
     close() {
