@@ -186,6 +186,15 @@ function renderMeetingMinutesDialog(markdown) {
 	`;
     document.body.appendChild(dialogElement);
     let dialog = document.querySelector('dialog');
+    //Create a new observer to check if the dialog's mutation changes to open, and if it's open then remove it
+    let observer = new MutationObserver(mutations => {
+	    if(mutations[0].attributeName === "open") {
+		    dialog.remove();
+		    observer.disconnect();
+	    }
+    });
     dialogPolyfill.registerDialog(dialog);
     dialog.showModal();
+    //Create an observer if the dialog's attribute is open
+    observer.observe(dialog, {attributes: true});
 }
