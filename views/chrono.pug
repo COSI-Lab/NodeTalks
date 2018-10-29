@@ -29,11 +29,13 @@ html(ng-app='talksApp')
 				th Talk Presenter
 				th Type
 				th Description
+				th Link
 				th
 			tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false} | orderBy: ['id']")
 				td.name {{ talk.name }}
 				td.type {{ talk.type }}
 				td.desc {{ talk.desc }}
+				td.link: a(target='_blank' href='{{ talk.link }}') .
 				td.hides
 					button(ng-click="hide(this.talk.id)") X
 					button(ng-click="unhide(this.talk.id)") &#x21B6;
@@ -47,6 +49,7 @@ html(ng-app='talksApp')
 						option(value="announcement") Announcement
 						option(value="after meeting slot") After-Meeting Slot
 					th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description" required)
+					th: input(id="in_link" size=30 name="link" type="text" ng-model="newTalk.link" placeholder="Link")
 					th: button(ng-click="createTalk()") Create
 
 		script(src="js/vendors/angular.min.js")

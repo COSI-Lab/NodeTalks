@@ -31,6 +31,7 @@ html(ng-app='talksApp')
 				th Talk Presenter
 				th Type
 				th Description
+				th Link
 				th
 
 			tbody
@@ -38,6 +39,7 @@ html(ng-app='talksApp')
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
+					td.link: a(target='_blank' href='{{ talk.link }}') .
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
@@ -45,6 +47,7 @@ html(ng-app='talksApp')
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
+					td.link: a(target='_blank' href='{{ talk.link }}') .
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
@@ -52,6 +55,7 @@ html(ng-app='talksApp')
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
+					td.link: a(target='_blank' href='{{ talk.link }}') .
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
@@ -59,6 +63,7 @@ html(ng-app='talksApp')
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
+					td.link: a(target='_blank' href='{{ talk.link }}') .
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
@@ -66,6 +71,7 @@ html(ng-app='talksApp')
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
+					td.link: a(target='_blank' href='{{ talk.link }}') .
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
@@ -79,6 +85,7 @@ html(ng-app='talksApp')
 							option(value="announcement") Announcement
 							option(value="after meeting slot") After-Meeting Slot
 						th: input(id="in_desc" size=50 name="desc" type="text" ng-model="newTalk.desc" placeholder="Description")
+						th: input(id="in_link" size=30 name="link" type="text" ng-model="newTalk.link" placeholder="Link")
 						th: button(ng-click="createTalk()") Create
 
 		p(style="text-align: center;"): button(onclick="parseToMM()") Parse to Meeting Minutes
