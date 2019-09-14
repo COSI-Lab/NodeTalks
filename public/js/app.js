@@ -169,7 +169,7 @@ function genCategory(talksList, title) {
     result += `# ${title}\n\n`;
 
     for (let topic of talksList) {
-        result += `## ${topic.desc}\n\n`;
+        result += `## ${topic.desc}\n\n${topic.name} - \n\n`;
     }
 
     return result;
