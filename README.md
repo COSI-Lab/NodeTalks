@@ -25,19 +25,6 @@ node index.js
 
 You can enable it to run continuously easily with programs like [Forever](https://github.com/foreverjs/forever) or [Nodemon](https://github.com/remy/nodemon).
 
-# Known Dev quirks
-
-In talks-ctrl.js, there is a code block in two functions that limit write actions to within users in a specified IP range.
-
-```js
-if (!allowedIP(req.clientIp)) {
-  res.sendStatus(500);
-  return;
-}
-```
-
-It doesn't include localhost currently so I (@lannonbr) have commented those lines out when debugging it, but if anyone is interested in setting up something to skip those lines in a development mode, feel free to contribute.
-
 ## Tools Used
 
 - Express
