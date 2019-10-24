@@ -2,6 +2,7 @@ var Sequelize = require('sequelize');
 var inSubnet = require('insubnet');
 var { createLogger, format, transports } = require('winston');
 var { combine, timestamp, label, printf } = format;
+var commandLineArgs = process.argv.slice(2);
 
 var myFormat = printf(info => {
 	return `${info.timestamp} ${info.level}: ${info.message}`;
@@ -116,6 +117,11 @@ function connectToServer() {
 	});
 }
 
+// Don't block IPs in dev mode
 function allowedIP(ip) {
-	return inSubnet.IPv4(ip, '128.153.0.0/16');
+	if (commandLineArgs.includes('-d') || commandLineArgs.includes('--dev')) {
+		return true;
+	} else {
+		return inSubnet.IPv4(ip, '128.153.0.0/16');
+	}
 }
