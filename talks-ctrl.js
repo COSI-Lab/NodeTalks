@@ -3,6 +3,8 @@ var inSubnet = require('insubnet');
 var rangeCheck = require('range_check');
 var { createLogger, format, transports } = require('winston');
 var { combine, timestamp, label, printf } = format;
+var meetingPassword = require('./meeting-password.json')
+
 
 var myFormat = printf(info => {
 	return `${info.timestamp} ${info.level}: ${info.message}`;
@@ -33,7 +35,7 @@ module.exports.getVisibleTalks = (req, res) => {
 }
 
 module.exports.createTalk = (req, res) => {
-	if(!allowedIP(req.clientIp)) {
+	if(!allowed(req)) {
 		res.sendStatus(500);
 		return;
 	}
@@ -60,7 +62,7 @@ module.exports.createTalk = (req, res) => {
 };
 
 module.exports.updateTalk = (req, res) => {
-	if(!allowedIP(req.clientIp)) {
+	if(!allowed(req)) {
 		res.sendStatus(500);
 		return;
 	}
@@ -118,11 +120,22 @@ function connectToServer() {
 }
 
 function allowedIP(ip) {
-//	var insub = inSubnet.IPv4(ip, '128.153.0.0/16');
+  //var insub = inSubnet.IPv4(ip, '128.153.0.0/16');
 	var insub = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.144.0/23', '128.153.146.0/24']);
 	logger.log({
-level: 'info',
-message: `[VALIDATE-IP] Validating IP ${ip} : ${insub}`
-});
+    level: 'info',
+    message: `[VALIDATE-IP] Validating IP ${ip} : ${insub}`
+  });
 	return insub
+}
+function validPassword(req) {
+	if (!meetingPassword || !meetingPassword.password) {
+		return false;
+	}
+
+	return req.body.password == meetingPassword.password;
+}
+
+function allowed(req) {
+	return allowedIP(req.ip) || validPassword(req);
 }

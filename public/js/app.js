@@ -1,6 +1,10 @@
 // Angular JS
 var app = angular.module('talksApp', []);
 
+function promptPassword() {
+    return prompt("Please enter tonight's meeting password\nOr continue if you're on the COSI subnet");
+}
+
 function getTalks($scope, $http) {
     // send the GET request
     $http.get("/api/talks").success(data => {
@@ -11,6 +15,7 @@ function getTalks($scope, $http) {
 function postTalk($scope, $http, socket) {
     // Set the data to be sent through the request to be the newTalk object
     var data = $scope.newTalk;
+    data.password = promptPassword();
 
     console.log(data);
 
@@ -29,7 +34,8 @@ function hideTalk($scope, $http, socket) {
         talkId: $scope.id,
         hiddenStatus: true
     };
-
+    data.password = promptPassword();
+    
     $http.post("/api/hideTalk", data).then(response => { $scope.talks = response.data;
         socket.emit("update", response.data);
         new Snackbar('success', 'check-circle', "Success: Talk hidden");
@@ -43,7 +49,8 @@ function unhideTalk($scope, $http, socket) {
         talkId: $scope.id,
         hiddenStatus: false
     };
-
+    data.password = promptPassword();
+    
     $http.post("/api/unhideTalk", data).then(response => {
         $scope.talks = response.data;
         socket.emit("update", response.data);
