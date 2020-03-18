@@ -2,7 +2,7 @@
 var app = angular.module('talksApp', []);
 
 function promptPassword() {
-    return prompt("Please enter tonight's meeting password");
+    return prompt("Please enter tonight's meeting password\nOr continue if you're on the COSI subnet");
 }
 
 function getTalks($scope, $http) {
