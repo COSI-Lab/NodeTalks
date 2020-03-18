@@ -1,5 +1,6 @@
 var Sequelize = require('sequelize');
 var inSubnet = require('insubnet');
+var rangeCheck = require('range_check');
 var { createLogger, format, transports } = require('winston');
 var { combine, timestamp, label, printf } = format;
 var meetingPassword = require('./meeting-password.json')
@@ -118,10 +119,15 @@ function connectToServer() {
 	});
 }
 
-function allowedIP(req) {
-	return inSubnet.IPv4(req.ip, '128.153.0.0/16');
+function allowedIP(ip) {
+  //var insub = inSubnet.IPv4(ip, '128.153.0.0/16');
+	var insub = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.144.0/23', '128.153.146.0/24']);
+	logger.log({
+    level: 'info',
+    message: `[VALIDATE-IP] Validating IP ${ip} : ${insub}`
+  });
+	return insub
 }
-
 function validPassword(req) {
 	if (!meetingPassword || !meetingPassword.password) {
 		return false;
@@ -131,5 +137,5 @@ function validPassword(req) {
 }
 
 function allowed(req) {
-	return allowedIP(req) || validPassword(req);
+	return allowedIP(req.ip) || validPassword(req);
 }

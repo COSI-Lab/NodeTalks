@@ -120,11 +120,9 @@ function fetchTalks() {
 function nextWednesday() {
     // Meeting dates for the rest of the week. Update this array once a semester
     // to get the valid list of meeting dates
-    var Dates2017 = [
-        'September 6th',
-        'September 13th',
-        'September 20th',
-        'September 27th'
+    var Dates2019 = [
+	    'December 4',
+	    'December 11'
     ];
 
     let i = 0;
@@ -132,7 +130,7 @@ function nextWednesday() {
 
     while(true) {
         let day = moment().day(3 + (i*7)).format("MMMM Do");
-        if(Dates2017.includes(day)) {
+        if(Dates2019.includes(day)) {
             nextMeeting = day;
             break;
         }
