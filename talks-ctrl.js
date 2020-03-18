@@ -1,5 +1,6 @@
 var Sequelize = require('sequelize');
 var inSubnet = require('insubnet');
+var rangeCheck = require('range_check');
 var { createLogger, format, transports } = require('winston');
 var { combine, timestamp, label, printf } = format;
 
@@ -117,5 +118,11 @@ function connectToServer() {
 }
 
 function allowedIP(ip) {
-	return inSubnet.IPv4(ip, '128.153.0.0/16');
+//	var insub = inSubnet.IPv4(ip, '128.153.0.0/16');
+	var insub = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.144.0/23', '128.153.146.0/24']);
+	logger.log({
+level: 'info',
+message: `[VALIDATE-IP] Validating IP ${ip} : ${insub}`
+});
+	return insub
 }
