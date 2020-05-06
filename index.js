@@ -27,7 +27,6 @@ app.use(morgan('tiny'));
 
 // load the root page
 app.get('/', (req, res) => {
-	console.log(req.ip);
 	res.render('index');
 });
 

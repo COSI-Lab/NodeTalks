@@ -120,13 +120,15 @@ function connectToServer() {
 }
 
 function allowedIP(ip) {
-  //var insub = inSubnet.IPv4(ip, '128.153.0.0/16');
-	var insub = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.144.0/23', '128.153.146.0/24']);
+	let inv4 = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.144.0/23', '128.153.145.0/24']);
+	let inv6 = rangeCheck.inRange(rangeCheck.displayIP(ip), "2605:6480::1/32");
+
 	logger.log({
-    level: 'info',
-    message: `[VALIDATE-IP] Validating IP ${ip} : ${insub}`
-  });
-	return insub
+		level: 'info',
+		message: `[VALIDATE-IP] Validating IP ${ip} : IPv4:${inv4} IPv6:${inv6}`
+	});
+	
+	return inv4 || inv6;
 }
 function validPassword(req) {
 	if (!meetingPassword || !meetingPassword.password) {
@@ -137,5 +139,6 @@ function validPassword(req) {
 }
 
 function allowed(req) {
-	return allowedIP(req.ip) || validPassword(req);
+	let ip = req.headers["x-forwarded-for"];
+	return allowedIP(ip) || validPassword(req);
 }

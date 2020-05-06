@@ -2,3 +2,4 @@
 node_modules/
 talks.db
 public/log/talks.log
+nohup.out
