@@ -2,7 +2,7 @@
 var app = angular.module('talksApp', []);
 
 function promptPassword() {
-    return prompt("Please enter tonight's meeting password\nOr continue if you're on the COSI subnet");
+    return prompt("Please enter tonight's meeting password\nOR continue if you're on the Clarkson Network");
 }
 
 function getTalks($scope, $http) {
@@ -121,8 +121,20 @@ function nextWednesday() {
     // Meeting dates for the rest of the week. Update this array once a semester
     // to get the valid list of meeting dates
     var Dates2019 = [
-	    'December 4',
-	    'December 11'
+	    'January 27',
+            'February 3',
+            'February 10',
+            'February 17',
+            'February 24',
+            'March 3',
+            'March 10',
+            'March 17',
+            'March 24',
+            'March 31',
+            'April 7',
+            'April 14',
+            'April 21',
+            'April 28'
     ];
 
     let i = 0;

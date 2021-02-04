@@ -120,8 +120,8 @@ function connectToServer() {
 }
 
 function allowedIP(ip) {
-	let inv4 = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.144.0/23', '128.153.145.0/24']);
-	let inv6 = rangeCheck.inRange(rangeCheck.displayIP(ip), "2605:6480::1/32");
+	let inv4 = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.0.0/16']);
+	let inv6 = rangeCheck.inRange(rangeCheck.displayIP(ip), "2605:6480::/32");
 
 	logger.log({
 		level: 'info',

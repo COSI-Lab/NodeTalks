@@ -1,5 +1,6 @@
 .DS_Store
 node_modules/
-talks.db
+talks.db*
 public/log/talks.log
 nohup.out
+meeting-password.json
