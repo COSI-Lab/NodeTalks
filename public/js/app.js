@@ -120,42 +120,31 @@ function fetchTalks() {
 function nextWednesday() {
     // Meeting dates for the rest of the week. Update this array once a semester
     // to get the valid list of meeting dates
-    var Dates2019 = [
+    var dates = [
 	    'January 27',
-            'February 3',
-            'February 10',
-            'February 17',
-            'February 24',
-            'March 3',
-            'March 10',
-            'March 17',
-            'March 24',
-            'March 31',
-            'April 7',
-            'April 14',
-            'April 21',
-            'April 28'
+        'February 3',
+        'February 10',
+        'February 17',
+        'February 24',
+        'March 3',
+        'March 10',
+        'March 17',
+        'March 24',
+        'March 31',
+        'April 7',
+        'April 14',
+        'April 21',
+        'April 28'
     ];
 
-    let i = 0;
-    let nextMeeting = "";
-
-    while(true) {
-        let day = moment().day(3 + (i*7)).format("MMMM Do");
-        if(Dates2019.includes(day)) {
-            nextMeeting = day;
+    today = moment();
+    for (i = 0; i < dates.length; i++) {
+        if (today < moment(dates[i], "MMMM DD")) {
             break;
         }
-
-        // Never more than 15 meetings, so exit out when the time comes.
-        if(i > 15) {
-            nextMeeting = "TBD";
-            break;
-        }
-        i++;
     }
 
-    document.getElementById("meetingDate").innerText = nextMeeting;
+    document.getElementById("meetingDate").innerText = dates[i];
 }
 
 function generateMeetingMinutes(talks) {
