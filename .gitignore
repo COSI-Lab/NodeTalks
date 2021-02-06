@@ -4,3 +4,4 @@ talks.db*
 public/log/talks.log
 nohup.out
 meeting-password.json
+package-lock.json
