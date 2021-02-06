@@ -34,35 +34,35 @@ html(ng-app='talksApp')
 				th
 
 			tbody
-				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'forum topic'} | orderBy: ['type']")
+				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'forum topic'}")
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
-				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'lightning talk'} | orderBy: ['type']")
+				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'lightning talk'}")
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
-				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'project	update'} | orderBy: ['type']")
+				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'project	update'}")
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
-				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'announcement'} | orderBy: ['type']")
+				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'announcement'}")
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}
 					td.hides
 						button(ng-click="hide(this.talk.id)") X
 						button(ng-class="{'hidden-button': !talk.hidden}" ng-click="unhide(this.talk.id)") &#x21B6;
-				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'after meeting slot'} | orderBy: ['type']")
+				tr(class="event" ng-class="{hidden: talk.hidden}" ng-repeat="talk in talks | filter: {'hidden': false, type: 'after meeting slot'}")
 					td.name {{ talk.name }}
 					td.type {{ talk.type }}
 					td.desc {{ talk.desc }}

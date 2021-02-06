@@ -78,11 +78,12 @@ module.exports.updateTalk = (req, res) => {
 			{ where: { id: talkId }}
 		);
 	}).then(() => {
-		return talksModel.find({
+		return talksModel.findAll({
 			attributes: ['id', 'name', 'type', 'desc', 'hidden'],
-			where: { id: req.body.talkId }
+			where: { id: req.body.talkId },
+			limit: 1
 		}).then(data => {
-			const talk = data.dataValues;
+			const talk = data[0].dataValues;
 
 			logger.log({
 				level: 'info',
