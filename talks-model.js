@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       name: { type: DataTypes.STRING },
       type: { type: DataTypes.STRING },
       desc: { type: DataTypes.STRING },
+      link: { type: DataTypes.STRING },
       hidden: { type: DataTypes.BOOLEAN, defaultValue: false }
     },
     {

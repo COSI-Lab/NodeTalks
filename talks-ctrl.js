@@ -45,14 +45,14 @@ module.exports.createTalk = (req, res) => {
 
 	// write the new talk to the server
 	return talksModel.sync().then(() => {
-		const { name, type, desc } = req.body;
+		const { name, type, desc, link } = req.body;
 		// create an instance of the model and save to the db
-		talksModel.create({name, type, desc}, {
-			fields: ['id', 'name', 'type', 'desc']
+		talksModel.create({name, type, desc, link}, {
+			fields: ['id', 'name', 'type', 'desc', 'link']
 		}).then(data => {
 			logger.log({
 				level: 'info',
-				message: `[CREATE] ${name} created a ${type} with the description: ${desc}`
+				message: `[CREATE] ${name} created a ${type} with the description: ${desc} link: ${link}`
 			});
 
 			// reload the talks
@@ -79,14 +79,14 @@ module.exports.updateTalk = (req, res) => {
 		);
 	}).then(() => {
 		return talksModel.find({
-			attributes: ['id', 'name', 'type', 'desc', 'hidden'],
+			attributes: ['id', 'name', 'type', 'desc', 'link', 'hidden'],
 			where: { id: req.body.talkId }
 		}).then(data => {
 			const talk = data.dataValues;
 
 			logger.log({
 				level: 'info',
-				message: `[UPDATE] The ${talk.type} "${talk.desc}" by ${talk.name} was ${talk.hidden ? 'hidden': 'unhidden'}`
+				message: `[UPDATE] The ${talk.type} "${talk.desc}" by ${talk.name} link: ${talk.link} was ${talk.hidden ? 'hidden': 'unhidden'}`
 			});
 
 			loadTalks(talksModel, res);
@@ -97,7 +97,7 @@ module.exports.updateTalk = (req, res) => {
 // Send a SELECT query to the database and return the response as JSON
 function loadTalks(model, res) {
 	return model.findAll({
-		attributes: ['id', 'name', 'type', 'desc', 'hidden']
+		attributes: ['id', 'name', 'type', 'desc', 'link', 'hidden']
 	}).then(result => {
 		return res.json(result);
 	});
@@ -105,7 +105,7 @@ function loadTalks(model, res) {
 
 function loadVisibleTalks(model, res) {
 	return model.findAll({
-		attributes: ['id', 'name', 'type', 'desc', 'hidden'],
+		attributes: ['id', 'name', 'type', 'desc', 'link', 'hidden'],
 		where: {hidden: false}
 	}).then(result => {
 		return res.json(result);

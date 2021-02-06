@@ -75,9 +75,12 @@ app.controller('talksController', ($scope, $http) => {
     // Send a http POST request to create a new talk
     $scope.createTalk = () => {
         if($scope.newTalk !== undefined) {
-            let {name, type, desc} = $scope.newTalk;
+            let {name, type, desc, link} = $scope.newTalk;
             
             if(name.trim() == '' || type.trim() == '' || desc.trim() == '') {
+                if (link.trim() == '') {
+                    link = '/'
+                }
                 alert('Empty fields. please try again');
                 $scope.newTalk = {};
                 return;
