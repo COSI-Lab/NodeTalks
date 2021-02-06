@@ -4,7 +4,7 @@ var rangeCheck = require('range_check');
 var { createLogger, format, transports } = require('winston');
 var { combine, timestamp, label, printf } = format;
 var meetingPassword = require('./meeting-password.json')
-
+var commandLineArgs = process.argv.slice(2);
 
 var myFormat = printf(info => {
 	return `${info.timestamp} ${info.level}: ${info.message}`;
@@ -120,6 +120,11 @@ function connectToServer() {
 }
 
 function allowedIP(ip) {
+	// Overrides while in development mode
+	if (commandLineArgs.includes('-d') || commandLineArgs.includes('--dev')) {
+		return true;
+	}
+
 	let inv4 = rangeCheck.inRange(rangeCheck.displayIP(ip), ['128.153.0.0/16']);
 	let inv6 = rangeCheck.inRange(rangeCheck.displayIP(ip), "2605:6480::/32");
 
@@ -130,6 +135,7 @@ function allowedIP(ip) {
 	
 	return inv4 || inv6;
 }
+
 function validPassword(req) {
 	if (!meetingPassword || !meetingPassword.password) {
 		return false;

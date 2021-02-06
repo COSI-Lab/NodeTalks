@@ -118,10 +118,9 @@ function fetchTalks() {
 }
 
 function nextWednesday() {
-    // Meeting dates for the rest of the week. Update this array once a semester
-    // to get the valid list of meeting dates
+    // Update this array once a semester to get the valid list of meeting dates
     var dates = [
-	    'January 27',
+        'January 27',
         'February 3',
         'February 10',
         'February 17',
@@ -137,14 +136,20 @@ function nextWednesday() {
         'April 28'
     ];
 
-    today = moment();
+    let today = moment();
+    let nextMeeting = null;
     for (i = 0; i < dates.length; i++) {
         if (today < moment(dates[i], "MMMM DD")) {
+            nextMeeting = dates[i];
             break;
         }
     }
 
-    document.getElementById("meetingDate").innerText = dates[i];
+    if (!nextMeeting) {
+        document.getElementById("meetingDate").innerText = "TBD";
+    } else {
+        document.getElementById("meetingDate").innerText = dates[i];
+    }
 }
 
 function generateMeetingMinutes(talks) {
