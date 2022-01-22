@@ -19,7 +19,7 @@
     "jshint-stylish": "2.2.1",
     "morgan": "1.10.0",
     "netmask": "1.0.6",
-    "node-fetch": "2.6.1",
+    "node-fetch": "3.1.1",
     "promise": "8.1.0",
     "pug": "3.0.0",
     "range_check": "2.0.4",
